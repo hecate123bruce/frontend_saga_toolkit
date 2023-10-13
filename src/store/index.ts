@@ -2,13 +2,16 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import createSagaMiddleware from "@redux-saga/core";
 
 import {
+  transactionActions,
+  transactionReducer,
   userActions,
   userReducer
 } from './slices';
 import rootSaga from "./sagas";
 
 const reducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  transaction: transactionReducer
 })
 
 const sageMiddleware = createSagaMiddleware();
@@ -25,7 +28,8 @@ export const store = configureStore({
 sageMiddleware.run(rootSaga);
 
 export const Appactions = {
-  user: userActions
+  user: userActions,
+  transaction: transactionActions
 }
 
 export type RootState = ReturnType<typeof store.getState>;
