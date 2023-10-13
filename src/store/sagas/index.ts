@@ -5,7 +5,7 @@ import { getUsersSaga } from './user.saga';
 
 function* rootSaga() {
   yield all([
-    takeLatest(Appactions.user.getUsers.type, getUsersSaga)
+    takeLatest(Appactions.user.getUsers.type, getUsersSaga),
   ])
 }
 
