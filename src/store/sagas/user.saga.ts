@@ -25,3 +25,17 @@ export function* getUsersSaga(action: any) {
     yield put(Appactions.user.getUserError(error.response.data.message));
   }
 }
+
+export function* createUserSaga(action: any) {
+  try {
+    const result : Partial<ResponseGenerator> = yield call(
+      async () => await mainApiInstance.post('api/v1/user', action.payload)
+    );
+
+    if (result) {
+      yield put(Appactions.user.createSuccess(result.data));
+    }
+  } catch (error: any) {
+    yield put(Appactions.user.createError(error.response.data.message))
+  }
+}
