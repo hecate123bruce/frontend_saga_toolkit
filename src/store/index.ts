@@ -1,5 +1,5 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import createSagaMiddleware from "@redux-saga/core";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 import {
   userActions,
