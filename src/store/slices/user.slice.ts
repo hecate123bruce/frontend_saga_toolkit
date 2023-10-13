@@ -3,12 +3,16 @@ import { IUser } from "type";
 
 type StateTyoe = {
   users: IUser[],
-
+  gettingUsers: boolean,
+  gotUsers: boolean,
+  
   errors: string[]
 }
 
 const initialState: StateTyoe = {
   users: [],
+  gettingUsers: false,
+  gotUsers: false,
 
   errors: []
 }
@@ -19,7 +23,7 @@ const userSlice = createSlice({
   reducers: {
     //get users
     getUsers(state: StateTyoe) {
-      
+
     }
   }
 })
