@@ -27,7 +27,7 @@ export const store = configureStore({
 
 sageMiddleware.run(rootSaga);
 
-export const Appactions = {
+export const AppActions = {
   user: userActions,
   transaction: transactionActions
 }

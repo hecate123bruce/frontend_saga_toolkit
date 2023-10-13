@@ -1,6 +1,6 @@
 import { call, put } from "redux-saga/effects"
 
-import { Appactions } from "store";
+import { AppActions } from "store";
 import { mainApiInstance } from "utils"
 
 interface ResponseGenerator {
@@ -19,10 +19,10 @@ export function* getTransactionsSaga(action: any) {
     );
 
     if (result) {
-      yield put(Appactions.transaction.getTransactionSuccess(result.data));
+      yield put(AppActions.transaction.getTransactionSuccess(result.data));
     }
   } catch (error: any) {
-    yield put(Appactions.transaction.getTransactionError(error.response.data.message))
+    yield put(AppActions.transaction.getTransactionError(error.response.data.message))
   }
 }
 
@@ -33,10 +33,10 @@ export function* createTransactionSaga(action: any) {
     );
 
     if (result) {
-      yield put(Appactions.transaction.createTransactionSuccess(result.data));
+      yield put(AppActions.transaction.createTransactionSuccess(result.data));
     }
   } catch(error: any) {
-    yield put(Appactions.transaction.createTransactionError(error.response.data.message))
+    yield put(AppActions.transaction.createTransactionError(error.response.data.message))
   }
 }
  

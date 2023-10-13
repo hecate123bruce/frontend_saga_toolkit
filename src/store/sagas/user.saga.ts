@@ -1,7 +1,7 @@
 import { put, call } from "redux-saga/effects";
 import { mainApiInstance } from "utils";
 
-import { Appactions } from "store";
+import { AppActions } from "store";
 
 interface ResponseGenerator {
   config: any;
@@ -19,10 +19,10 @@ export function* getUsersSaga(action: any) {
     );
 
     if (result) {
-      yield put(Appactions.user.getUsersSuccess(result.data));
+      yield put(AppActions.user.getUsersSuccess(result.data));
     }
   } catch(error:any) {
-    yield put(Appactions.user.getUserError(error.response.data.message));
+    yield put(AppActions.user.getUserError(error.response.data.message));
   }
 }
 
@@ -33,9 +33,9 @@ export function* createUserSaga(action: any) {
     );
 
     if (result) {
-      yield put(Appactions.user.createSuccess(result.data));
+      yield put(AppActions.user.createSuccess(result.data));
     }
   } catch (error: any) {
-    yield put(Appactions.user.createError(error.response.data.message))
+    yield put(AppActions.user.createError(error.response.data.message))
   }
 }

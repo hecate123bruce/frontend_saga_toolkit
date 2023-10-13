@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { 
   Container,
   Input,
-  Button 
-} from 'components/common';
-import { Appactions, RootState } from 'store';
+  Button, 
+  TransactionsTable, 
+  UsersTable
+} from 'components';
+import { AppActions, RootState } from 'store';
 import { ITransaction } from 'type';
 
 const initialTransaction: Omit<ITransaction, '_id'> = {
@@ -23,23 +25,28 @@ export const HomeContainer: React.FC = () => {
   const { errors: userErrors } = useSelector((state: RootState) => state.user);
   const { errors: transactionErrors } = useSelector((state: RootState) => state.transaction);
 
+  useEffect(() => {
+    dispatch(AppActions.user.getUsers());
+    dispatch(AppActions.transaction.getTransactions());
+  }, [dispatch]);
+
   const changeTransaction = (e: any) => {
     setTransaction(prev => ({...prev, [e.target.name]: e.target.value}));
   }
 
   const createUser = () => {
-    dispatch(Appactions.user.createUser({ 
+    dispatch(AppActions.user.createUser({ 
       balance 
     }))
   }
 
   const createTransaction = () => {
-    dispatch(Appactions.transaction.createTransaction(transaction))
+    dispatch(AppActions.transaction.createTransaction(transaction))
   }
 
   const onClearLogger = () => {
-    dispatch(Appactions.user.resetError());
-    dispatch(Appactions.transaction.resetError());
+    dispatch(AppActions.user.resetError());
+    dispatch(AppActions.transaction.resetError());
   }
 
   return (
@@ -57,7 +64,7 @@ export const HomeContainer: React.FC = () => {
                 Create new User
               </Button>
             </div>
-            {/* <UsersTable /> */}
+            <UsersTable />
           </div>
           <div className="transactionGroup">
             <div className='input-group'>
@@ -72,7 +79,7 @@ export const HomeContainer: React.FC = () => {
                 Send
               </Button>
             </div>
-            {/* <TransactionsTable /> */}
+            <TransactionsTable />
           </div>
         </div>
         <div className='error-logger'>
