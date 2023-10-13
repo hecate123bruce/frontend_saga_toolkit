@@ -40,7 +40,7 @@ const transactionSlice = createSlice({
       state.gotTransaction = false;
       state.errors = [ ...state.errors, ...action.payload ];
     },
-    createTransaction(state: StateType) {
+    createTransaction(state: StateType, action) {
       state.createdTransaction = false;
       state.creatingTransaction = true;
     },

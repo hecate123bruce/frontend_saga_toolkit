@@ -39,7 +39,7 @@ const userSlice = createSlice({
       state.gotUsers = false;
       state.errors = action.payload
     },
-    createUser(state: StateType) {
+    createUser(state: StateType, action) {
       state.createdUser = false;
       state.creatingUser = true;
     },
