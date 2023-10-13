@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IUser } from "type";
 
-type StateTyoe = {
+type StateType = {
   users: IUser[],
   gettingUsers: boolean,
   gotUsers: boolean,
-  
+
   errors: string[]
 }
 
-const initialState: StateTyoe = {
+const initialState: StateType = {
   users: [],
   gettingUsers: false,
   gotUsers: false,
@@ -22,8 +22,20 @@ const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     //get users
-    getUsers(state: StateTyoe) {
-
+    getUsers(state: StateType) {
+      state.gettingUsers = true;
+      state.gotUsers = false;
+    },
+    getUsersSuccess(state, action) {
+      state.gettingUsers = false;
+      state.gotUsers = true;
+      const { result } = action.payload;
+      state.users = result;
+    },
+    getUserError(state, action) {
+      state.gettingUsers = false;
+      state.gotUsers = false;
+      state.errors = action.payload
     }
   }
 })
