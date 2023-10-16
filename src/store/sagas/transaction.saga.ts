@@ -17,7 +17,7 @@ export function* getTransactionsSaga(action: any) {
     const result: Partial<ResponseGenerator> = yield call(
       async () => await mainApiInstance.get('api/v1/transaction')
     );
-
+      console.log(result);
     if (result) {
       yield put(AppActions.transaction.getTransactionSuccess(result.data));
     }
@@ -29,7 +29,7 @@ export function* getTransactionsSaga(action: any) {
 export function* createTransactionSaga(action: any) {
   try {
     const result: Partial<ResponseGenerator> = yield call(
-      async () => await mainApiInstance.post('api/v1/transacion', action.payload)
+      async () => await mainApiInstance.post('api/v1/transaction', action.payload)
     );
 
     if (result) {

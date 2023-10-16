@@ -8,9 +8,10 @@ export interface ITransactionsTableProps {
 
 export const TransactionsTable: React.FC<ITransactionsTableProps> = (props) => {
   const { transactions } = useSelector((root: RootState) => root.transaction);
+  
   const rows = [
     {
-      key: 'id',
+      key: '_id',
       value: 'Transaction ID'
     },
     {
@@ -18,7 +19,7 @@ export const TransactionsTable: React.FC<ITransactionsTableProps> = (props) => {
       value: 'From',
     },
     {
-      key: 'receiverId',
+      key: 'recieverId',
       value: 'To',
     },
     {

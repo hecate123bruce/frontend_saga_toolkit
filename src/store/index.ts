@@ -14,23 +14,23 @@ const reducer = combineReducers({
   transaction: transactionReducer
 })
 
-const sageMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   preloadedState: {},
   reducer: reducer,
   middleware: (getDefaultMiddleware: any) => 
     getDefaultMiddleware({ serializableCheck: false, thunk: false }).concat(
-      createSagaMiddleware
+      sagaMiddleware
     )
 })
-
-sageMiddleware.run(rootSaga);
 
 export const AppActions = {
   user: userActions,
   transaction: transactionActions
 }
+
+sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

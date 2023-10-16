@@ -10,7 +10,7 @@ export const UsersTable: React.FC<IUsersTableProps> = (props) => {
   const { users } = useSelector((root: RootState) => root.user);
   const rows = [
     {
-      key: 'id',
+      key: '_id',
       value: 'User ID'
     },
     {

@@ -70,8 +70,8 @@ export const HomeContainer: React.FC = () => {
             <div className='input-group'>
               <span></span>
               <Input type='text' placeholder='sender ID' name='senderId' value={transaction.senderId || ''} onChange={e => changeTransaction(e)} />
-              <Input type='text' placeholder='reciever ID' name='receiverId' value={transaction.recieverId} onChange={e => changeTransaction(e)} />
-              <Input className='' type='number' placeholder='amount' name='' value={transaction.amount} onChange={e => changeTransaction(e)} />
+              <Input type='text' placeholder='reciever ID' name='recieverId' value={transaction.recieverId || ''} onChange={e => changeTransaction(e)} />
+              <Input className='' type='number' placeholder='amount' name='amount' value={transaction.amount|| ''} onChange={e => changeTransaction(e)} />
               <Button
                 type='button'
                 onClick={createTransaction}

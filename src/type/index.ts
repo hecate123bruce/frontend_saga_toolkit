@@ -4,7 +4,7 @@ export interface IUser {
 }
 
 export interface ITransaction {
-  _id: string,
+  // _id: string,
   senderId: string,
   recieverId: string,
   amount: number
